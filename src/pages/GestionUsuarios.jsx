@@ -162,10 +162,10 @@ function GestionUsuarios() {
                         </div>
                     </div>
                     <div class="col-3">
-                        <button type="button" class="btn btn-light" onClick={handleSearchUsuario}>Buscar producto</button>
+                        <button type="button" class="btn btn-light" onClick={handleSearchUsuario}>Buscar usuario</button>
                     </div>
                     <div class="col-3">
-                        <button type="button" class="btn btn-light" onClick={handleAddUsuario}>Agregar producto</button>
+                        <button type="button" class="btn btn-light" onClick={handleAddUsuario}>Agregar usuario</button>
                     </div>
                 </div>
             </div>

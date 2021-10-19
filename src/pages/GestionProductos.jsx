@@ -29,6 +29,10 @@ function GestionProductos() {
         alert("Solicitud Back para buscar")
     };
 
+    const handleSearchProducts = () => {
+        alert("Solicitud Back para buscar Todos los Productos")
+    };
+
 
     const handleChangeState = (id) => {
         const index = products.findIndex(element => element.id === id)
@@ -91,12 +95,12 @@ function GestionProductos() {
             <div class="container">
 
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-1">
                         <h3 class="titulo">ID </h3>
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
 
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-2">
 
                             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="#ID" />
                         </div>
@@ -106,6 +110,9 @@ function GestionProductos() {
                     </div>
                     <div class="col-3">
                         <button type="button" class="btn btn-light" onClick={handleAddProduct}>Agregar producto</button>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-light" onClick={handleAddProduct}>Listar Todos</button>
                     </div>
                 </div>
             </div>
