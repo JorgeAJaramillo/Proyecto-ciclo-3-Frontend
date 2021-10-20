@@ -1,5 +1,6 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react'
+import  { useState, useEffect } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import {
@@ -8,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 
 import AppBar from "@mui/material/AppBar";
 import Toolbar from '@mui/material/Toolbar';
@@ -21,6 +23,10 @@ import HomeLosSprinters from './pages/HomeLosSprinters';
 import GestionProductos from './pages/GestionProductos';
 import GestionVentas from './pages/GestionVentas';
 import GestionUsuarios from './pages/GestionUsuarios';
+import CreateProduct from './pages/CreateProduct';
+import EditProduct from './pages/EditProduct';
+import ProductList from './pages/ProductList';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,7 +76,7 @@ export function App() {
     <Router>
       <div className={classes.root}>
        
-        <AppBar position="static">
+        <AppBar size="large" position="static">
           <Toolbar>
             <IconButton edge="start" color="inherit" aria-label="menu" className={classes.menuButton}>
         </IconButton>
@@ -79,18 +85,23 @@ export function App() {
             </Typography>
             {user ? (
               <>
-                <Button component={Link} to="/lossprinters" variant="contained" color="primary">Home</Button>
+                <Button component={Link} to="/lossprinters" size="small" style={{fontSize: "15px"}} variant="contained" color="primary">Home</Button>
                 {/*<Link to="/lossprinters">HomeLosSprinters</Link>*/}
                 {/*<Button component={Link} to="/regproductos" variant="contained" color="primary">RegistroProductos</Button>*/}
                 {/*<Link to="/regproductos">RegistroProductos</Link>*/}
                 {/*<Button component={Link} to="/regventas" variant="contained" color="primary">RegistroVentas</Button>*/}
                 {/*<Link to="/regventas">RegistroVentas</Link>*/}
-                <Button component={Link} to="/gesproductos" variant="contained" color="primary">Gestión Productos</Button>
+                <Button component={Link} to="/gesproductos" size="small" style={{fontSize: "10px"}} variant="contained" color="primary">Gestión Productos</Button>
                 {/*<Link to="/gesproductos">GestionProductos</Link>*/}
-                <Button component={Link} to="/gesventas" variant="contained" color="primary">Gestión Ventas</Button>
+                <Button component={Link} to="/gesventas" size="small" style={{fontSize: "10px"}} variant="contained" color="primary">Gestión Ventas</Button>
                 {/*<Link to="/gesventas">GestionVentas</Link>*/}
-                <Button component={Link} to="/gesusuarios" variant="contained" color="primary">Gestión Usuarios</Button>
+                <Button component={Link} to="/gesusuarios" size="small" style={{fontSize: "10px"}} variant="contained" color="primary">Gestión Usuarios</Button>
                 {/*<Link to="/gesusuarios">GestionUsuarios</Link>*/}
+
+                <Button component={Link} to="/listarpro" size="small" style={{fontSize: "10px"}} variant="contained" color="primary">Lista de Productos</Button>
+                <Button component={Link} to="/crearpro" size="small" style={{fontSize: "10px"}} variant="contained" color="primary">Crear Producto</Button>
+                <Button component={Link} to="/editarpro/:id" size="small" style={{fontSize: "10px"}} variant="contained" color="primary">Editar Producto</Button>
+                
                 {user}
                 <Button onClick={signOut} color="inherit">Logout</Button>
               </>
@@ -109,6 +120,15 @@ export function App() {
             <Route path="/gesproductos">
               <GestionProductos />
             </Route>
+            <Route path="/crearpro">
+              <CreateProduct />
+            </Route>
+            <Route path="/editarpro">
+              <EditProduct />
+            </Route>
+              <Route path="/">
+              <ProductList />
+              </Route>
             {/*<Route path="/regventas">
               <RegistroVentas />
             </Route>*/}
@@ -118,7 +138,7 @@ export function App() {
             <Route path="/gesusuarios">
               <GestionUsuarios />
               </Route>
-              <Route path="/">
+              <Route path="/lossprinters">
               <HomeLosSprinters />
               </Route>
           </Switch>

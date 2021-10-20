@@ -1,4 +1,3 @@
-
 import '../App.css';
 import './GestionProductos.css';
 import { useState } from 'react';
