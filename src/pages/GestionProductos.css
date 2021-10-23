@@ -1,0 +1,100 @@
+body{
+    background-color:rgb(80, 15, 80);
+}
+.boton_eliminar{
+
+    background:red;
+    color:white;
+    border: 1px solid;
+    border-color: black;
+    
+}
+
+.agregar{
+
+    margin-top:3%;
+    margin-bottom:3%;
+    text-align:right;
+}
+
+.boton-navegacion{
+
+    background-color: white;
+    border: 2px solid red;
+    width: 15%;
+    
+    margin-bottom: 5%;
+    font-weight: bold;
+    
+    
+}
+
+
+
+.container{
+    max-width:80%;
+    background-color:rgb(80, 15, 80);
+    margin-left: 10%;
+
+}
+
+.content-wrapper{
+    background-color:white;
+    max-width: 70%;
+    margin-left: 15%;
+    padding: 3%;
+}
+
+.formulario{
+    max-width: 100%;
+}
+.logout{
+    position:absolute;
+    right: 3%;
+    top: 5%;
+    background-color: white;
+    border: 2px solid red;
+
+}
+
+
+.menunav {   
+	width: 80%; 
+	margin: auto;
+	text-align: center;
+
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 1%;
+}
+
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 1%;
+}
+    
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.titulo{
+    margin-top:3%;
+    margin-bottom:3%;
+    text-align:center;
+    color:white;
+
+}
+
+.titulo_color{
+    color: red;
+}
