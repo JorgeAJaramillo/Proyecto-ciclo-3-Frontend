@@ -1,197 +1,33 @@
+import React from 'react';
 import '../App.css';
 import './GestionProductos.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function GestionProductos() {
-
-   
-    const [products, setProducts] = useState([]);
-
-    const handleAddProduct = () => {
-        const i = products.length + 1;
-        const newProduct = {
-            id: i,
-            description: "",
-            value: "",
-            state: "Disponible"
-        }
-        setProducts([...products, newProduct])
-    };
-    const handleDeleteProduct = (id) => {
-        alert("Solicitud Back para eliminar el id: " + id)
-    };
-
-    const handleUpdateProduct = (id) => {
-        alert("Solicitud Back para actualizar el id: " + id)
-    };
-
-    const handleSearchProduct = () => {
-        alert("Solicitud Back para buscar")
-    };
-
-    const handleSearchProducts = () => {
-        alert("Solicitud Back para buscar Todos los Productos")
-    };
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {ProductList} from './components/ProductList';
+import {CreateProduct} from './components/CreateProduct';
+import {EditProduct} from './components/EditProduct';
+import {NotFound} from './components/NotFound';
 
 
-    const handleChangeState = (id) => {
-        const index = products.findIndex(element => element.id === id)
 
-        var newProduct = products;
-        var newState = "Disponible";
-        if (newProduct[index].state === "Disponible") {
-            newState = "No disponible";
-        }
-        newProduct[index] = {
-
-            id: newProduct[index].id,
-            description: newProduct[index].description,
-            value: newProduct[index].value,
-            state: newState
-
-        }
-
-        setProducts([...newProduct])
-    };
-
-    const handleChangeValue = (event, id) => {
-        const index = products.findIndex(element => element.id === id)
-
-        var newProduct = products;
-        
-        newProduct[index] = {
-
-            id: newProduct[index].id,
-            description: newProduct[index].description,
-            value: event,
-            state: newProduct[index].state
-
-        }
-
-        setProducts([...newProduct])
-    };
-
-    const handleChangeDescription = (event, id) => {
-        const index = products.findIndex(element => element.id === id)
-
-        var newProduct = products;
-        
-        newProduct[index] = {
-
-            id: newProduct[index].id,
-            description: event,
-            value: newProduct[index].value,
-            state: newProduct[index].state
-
-        }
-
-        setProducts([...newProduct])
-    };
-
+export default function GestionProductos() {
     return (
+    <div>
+        <h1 class="titulo">Gestión de <span class="titulo_color">Productos</span> </h1>
+        <BrowserRouter>
+        
+            <Switch>
 
-        <div className="App">
-            <h1 class="titulo">Gestión de <span class="titulo_color">Productos</span> </h1>
-            <div class="container">
+            <Route exact path="/gesproductos" component={ProductList} />
+            <Route exact path="/add" component={CreateProduct} />
+            <Route exact path="/edit/:id" component={EditProduct} />
+    
 
-                <div class="row">
-                    <div class="col-1">
-                        <h3 class="titulo">ID </h3>
-                    </div>
-                    <div class="col-2">
+            </Switch>
 
-                        <div class="input-group mb-2">
-
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="#ID" />
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-light" onClick={handleSearchProduct}>Buscar producto</button>
-                    </div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-light" onClick={handleAddProduct}>Agregar producto</button>
-                    </div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-light" onClick={handleAddProduct}>Listar Todos</button>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div>
-                <table class="table table-light">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Valor unitario</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        {products.map((product) => (
-                            <tr key={product.id} >
-                                <th scope="row">{product.id}</th>
-                                <td>
-                                    <div class="input-group mb-3">
-
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={product.description} onChange={(e) => handleChangeDescription(e.target.value, product.id)}/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">$</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={product.value} onChange={(e) => handleChangeValue(e.target.value, product.id)}/>
-                                    </div>
-                                </td>
-                                <td>
-
-                                    <select
-                                        value={product.state}
-                                        onChange={() => handleChangeState(product.id)}
-                                    >
-                                        <option value="Disponible">Disponible</option>
-                                        <option value="No disponible">No disponible</option>
-
-                                    </select>
-                                </td>
-                                <td>
-                                    <div class="container" style={{
-                                        backgroundColor: '#f8f9fa'
-                                    }}>
-                                        <div class="row">
-                                            <div class="col">
-                                                <button type="button" class="btn btn-success" onClick={() => handleUpdateProduct(product.id)}>
-                                                    Guardar</button>
-                                            </div>
-                                            <div class="col">
-                                                <button type="button" class="btn btn-danger" onClick={() => handleDeleteProduct(product.id)}>
-                                                    Eliminar</button>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-
-
-
-                                </td>
-                            </tr>
-
-                        ))}
-
-
-
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-    );
+        </BrowserRouter>
+    </div>
+        )
 }
 
-export default GestionProductos;
