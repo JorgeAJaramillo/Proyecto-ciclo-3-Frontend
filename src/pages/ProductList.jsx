@@ -66,7 +66,7 @@ export function ProductList() {
                             <TableCell>{producto.valor}</TableCell>
                             <TableCell>{producto.estado ? "Disponible" : "Agotado"}</TableCell>
                             <TableCell>
-                                <Button component={Link} to={`/editarpro/:id ${producto._id}`} color="primary">Editar</Button>
+                                <Button component={Link} to={`/editarpro?id=${producto._id}`} color="primary">Editar</Button>
                                 <Button color="secondary" onClick={() => deleteProductoData(producto._id)} >Eliminar</Button>
                             </TableCell>
                         </TableRow>

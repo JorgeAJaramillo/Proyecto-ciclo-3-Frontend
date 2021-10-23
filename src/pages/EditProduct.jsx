@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography, RadioGroup, FormLabel, FormControlLabel, Radio } from '@material-ui/core';
 import { editProducto, getProducto } from '../services/productServices';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, useLocation } from 'react-router-dom';
 
 const initialValue = {
     valor: '',
@@ -26,14 +26,19 @@ export function EditProduct() {
     const classes = useStyles();
     let history = useHistory();
 
-    const { id } = useParams();
+    
+    const search = useLocation().search;
+    const id = new URLSearchParams(search).get('id');
 
     useEffect(() => {
+        console.log("id"+ id)
         loadProductoData();
     }, [])
 
     const loadProductoData = async () => {
+        
         let response = await getProducto(id);
+        console.log(response.data);
         setProducto(response.data.data);
     }
 
@@ -46,6 +51,8 @@ export function EditProduct() {
     }
 
     const updateProductoData = async () => {
+        console.log("produc");
+        console.log(producto)
         await editProducto(producto);
         history.push('/listarpro');
     }
