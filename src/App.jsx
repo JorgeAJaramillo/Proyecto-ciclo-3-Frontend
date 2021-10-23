@@ -79,7 +79,7 @@ export function App() {
             </Typography>
             {user ? (
               <>
-                <Button component={Link} to="/lossprinters" variant="contained" color="primary">Home</Button>
+                <Button component={Link} to="/" variant="contained" color="primary">Home</Button>
                 {/*<Link to="/lossprinters">HomeLosSprinters</Link>*/}
                 {/*<Button component={Link} to="/regproductos" variant="contained" color="primary">RegistroProductos</Button>*/}
                 {/*<Link to="/regproductos">RegistroProductos</Link>*/}
@@ -106,19 +106,19 @@ export function App() {
             {/*<Route path="/regproductos">
               <RegistroProductos />
             </Route>*/}
-            <Route path="/gesproductos">
+            <Route exact path="/gesproductos">
               <GestionProductos />
             </Route>
             {/*<Route path="/regventas">
               <RegistroVentas />
             </Route>*/}
-            <Route path="/gesventas">
+            <Route exact path="/gesventas">
               <GestionVentas />
             </Route>
-            <Route path="/gesusuarios">
+            <Route exact path="/gesusuarios">
               <GestionUsuarios />
               </Route>
-              <Route path="/">
+              <Route exact path="/">
               <HomeLosSprinters />
               </Route>
           </Switch>

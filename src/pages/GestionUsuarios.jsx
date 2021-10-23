@@ -1,9 +1,38 @@
 import React from 'react';
 import '../App.css';
 import './GestionProductos.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function GestionUsuarios() {
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {UserList} from './components/UserList';
+import {CreateUser} from './components/CreateUser';
+import {EditUser} from './components/EditUser';
+import {NotFound} from './components/NotFound';
+
+
+
+export default function GestionUsuarios() {
+    return (
+    <div>
+        <h1 class="titulo">Gestión de <span class="titulo_color">Usuarios</span> </h1>
+        <BrowserRouter>
+        
+            <Switch>
+
+            <Route exact path="/gesusuarios" component={UserList} />
+            <Route exact path="/add" component={CreateUser} />
+            <Route exact path="/edit/:id" component={EditUser} />
+    
+
+            </Switch>
+
+        </BrowserRouter>
+    </div>
+        )
+}
+
+
+/*function GestionUsuarios() {
   
    
     const [usuarios, setUsuarios] = useState([]);
@@ -162,10 +191,10 @@ function GestionUsuarios() {
                         </div>
                     </div>
                     <div class="col-3">
-                        <button type="button" class="btn btn-light" onClick={handleSearchUsuario}>Buscar usuario</button>
+                        <button type="button" class="btn btn-light" onClick={handleSearchUsuario}>Buscar producto</button>
                     </div>
                     <div class="col-3">
-                        <button type="button" class="btn btn-light" onClick={handleAddUsuario}>Agregar usuario</button>
+                        <button type="button" class="btn btn-light" onClick={handleAddUsuario}>Agregar producto</button>
                     </div>
                 </div>
             </div>
@@ -260,3 +289,4 @@ function GestionUsuarios() {
 }
 
 export default GestionUsuarios;
+*/
