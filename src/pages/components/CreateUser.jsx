@@ -1,6 +1,6 @@
 import react, { useState } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography, RadioGroup, FormLabel, FormControlLabel, Radio } from '@material-ui/core';
-import { addUsuario } from '../../services/UserServices';
+import { addUsuario } from '../../services/userServices.js';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Table, TableHead, TableCell, TableRow, TableBody, Button, makeStyles } from '@material-ui/core';
-import { getUsuario, deleteUsuario } from '../../services/UserServices';
+import { getUsuario, deleteUsuario } from '../../services/userServices';
 import { Link } from 'react-router-dom';
-import { getUsuarios } from '../../services/UserServices';
+import { getUsuarios } from '../../services/userServices';
 import { NavLink } from 'react-router-dom';
 import '../GestionProductos.css';
 
@@ -25,6 +25,7 @@ const useStyles = makeStyles({
     }
 })
 
+
 export function UserList() {
     const classes = useStyles();
 
@@ -36,7 +37,6 @@ export function UserList() {
 
     const getAllUsuarios = async () => {
         let response = await getUsuarios();
-        console.log(response);
         setUsuarios(response.data.usuarios);
     }
 

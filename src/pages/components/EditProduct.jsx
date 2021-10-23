@@ -30,12 +30,15 @@ export function EditProduct() {
     const { id } = useParams();
 
     useEffect(() => {
+        console.log("id")
+        console.log(id);
         loadProductoData();
     }, [])
 
     const loadProductoData = async () => {
-        let response = await getProducto(id);
-        setProducto(response.data.productos);
+        let responses = await getProducto(id);
+        let response = responses.data.producto;
+        setProducto(response);
     }
 
     const onValueChange = (e) => {

@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography, RadioGroup, FormLabel, FormControlLabel, Radio } from '@material-ui/core';
-import { editUsuario, getUsuario } from '../../services/UserServices';
+import { editUsuario, getUsuario } from '../../services/userServices';
 import { useHistory, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -35,11 +35,11 @@ export function EditUser() {
 
     const loadUserData = async () => {
         let response = await getUsuario(id);
-        setUsuario(response.data.usuarios);
+        setUsuario(response.data.usuario);
     }
 
     const onValueChange = (e) => {
-        setUsuario({ ...usuario, [e.target.name]: e.target.nombre });
+        setUsuario({ ...usuario, [e.target.name]: e.target.value });
     }
 
     const onStateChange = (state) => {

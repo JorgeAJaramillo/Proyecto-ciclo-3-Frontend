@@ -37,7 +37,6 @@ export function ProductList() {
 
     const getAllProductos = async () => {
         let response = await getProductos();
-        console.log(response);
         setProductos(response.data.productos);
     }
 

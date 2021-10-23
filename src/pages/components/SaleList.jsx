@@ -37,7 +37,6 @@ export function SaleList() {
 
     const getAllVentas = async () => {
         let response = await getVentas();
-        console.log(response);
         setVentas(response.data.ventas);
     }
 

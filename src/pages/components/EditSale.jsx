@@ -37,7 +37,7 @@ export function EditSale() {
 
     const loadVentaData = async () => {
         let response = await getVenta(id);
-        setVenta(response.data.ventas);
+        setVenta(response.data.venta);
     }
 
     const onValueChange = (e) => {
