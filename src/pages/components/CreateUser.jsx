@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const initialValue = {
     cedula: '',
     nombre: '',
-    rol: 'Vendedor',
+    rol: true,
     estado: 'Pendiente'
 }
 
@@ -31,15 +31,9 @@ export function CreateUser() {
     const onValueChange = (e) => {
         setUsuario({ ...usuario, [e.target.name]: e.target.value });
     }
-
     const onRolChange = (state) => {
         setUsuario({ ...usuario, "rol": state });
     }
-
-    const onStateChange = (state) => {
-        setUsuario({ ...usuario, "estado": state });
-    }
-
     const addUsuarioData = async () => {
         await addUsuario(usuario);
         history.push('/gesusuarios');
@@ -58,9 +52,17 @@ export function CreateUser() {
                 <InputLabel htmlFor="my-input">Nombre</InputLabel>
                 <Input onChange={(e) => onValueChange(e)} name="nombre" value={nombre} id="my-input" />
             </FormControl>
-            <FormControl>
-                <InputLabel htmlFor="my-input">Rol</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name="rol" value={rol} id="my-input" />
+            <FormControl component="fieldset">
+                <FormLabel component="legend">Rol</FormLabel>
+                <RadioGroup
+                    name='rol'
+                    onChange={(e) => onRolChange(e.target.value === "Vendedor")}
+                    aria-label="rol"
+                    defaultValue="Vendedor"
+                    value={rol ? "Vendedor" : "Administrador"}>
+                    <FormControlLabel value="Vendedor" control={<Radio />} label="Vendedor" />
+                    <FormControlLabel value="Administrador" control={<Radio />} label="Administrador" />
+                </RadioGroup>
             </FormControl>
             <FormControl>
                 <InputLabel htmlFor="my-input">Estado</InputLabel>

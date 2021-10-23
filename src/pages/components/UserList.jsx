@@ -70,7 +70,7 @@ export function UserList() {
                     
                             <TableCell>{usuario.cedula}</TableCell>
                             <TableCell>{usuario.nombre}</TableCell>
-                            <TableCell>{usuario.rol}</TableCell>
+                            <TableCell>{usuario.rol ? "Vendedor" : "Administrador"}</TableCell>
                             <TableCell>{usuario.estado}</TableCell>
                             <TableCell>
                                 <Button component={Link} to={`/edit/${usuario._id}`} color="primary">Editar</Button>

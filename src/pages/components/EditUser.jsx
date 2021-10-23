@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const initialValue = {
     cedula: '',
     nombre: '',
-    rol: 'Vendedor',
+    rol: true,
     estado: 'Pendiente'
 }
 
@@ -42,8 +42,8 @@ export function EditUser() {
         setUsuario({ ...usuario, [e.target.name]: e.target.value });
     }
 
-    const onStateChange = (state) => {
-        setUsuario({ ...usuario, "estado": state });
+    const onRolChange = (state) => {
+        setUsuario({ ...usuario, "rol": state });
     }
 
     const updateUsuarioData = async () => {
@@ -63,13 +63,22 @@ export function EditUser() {
                 <Input onChange={(e) => onValueChange(e)} name="nombre" value={nombre} id="my-input" />
             </FormControl>
     
-            <FormControl>
-                <InputLabel htmlFor="my-input">Rol</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name="rol" value={rol} id="my-input" />
+            <FormControl component="fieldset">
+                <FormLabel component="legend">Rol</FormLabel>
+                <RadioGroup
+                    name='rol'
+                    onChange={(e) => onRolChange(e.target.value === "Vendedor")}
+                    aria-label="rol"
+                    defaultValue="Vendedor"
+                    value={rol ? "Vendedor" : "Administrador"}>
+                    <FormControlLabel value="Vendedor" control={<Radio />} label="Vendedor" />
+                    <FormControlLabel value="Administrador" control={<Radio />} label="Administrador" />
+                </RadioGroup>
             </FormControl>
+
             <FormControl>
                 <InputLabel htmlFor="my-input">Estado</InputLabel>
-                <Input onChange={(e) => onStateChange(e)} name="estado" value={estado} id="my-input" />
+                <Input onChange={(e) => onValueChange(e)} name="estado" value={estado} id="my-input" />
             </FormControl>
             <FormControl>
             <Button  variant="contained" onClick={(e) => updateUsuarioData()} component={Link} to={`/gesusuarios`} color="primary">Editar Usuario</Button>
