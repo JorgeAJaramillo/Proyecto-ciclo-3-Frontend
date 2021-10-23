@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography, RadioGroup, FormLabel, FormControlLabel, Radio } from '@material-ui/core';
-import { editProducto, getProducto } from '../services/productServices';
-import { useHistory, useParams } from 'react-router-dom';
+import { addProducto } from '../../services/productServices';
+import { useHistory } from 'react-router-dom';
 
 const initialValue = {
-    valor: '',
     descripcion: '',
+    valor: '',
     estado: true,
 }
 
@@ -20,22 +20,12 @@ const useStyles = makeStyles({
     }
 })
 
-export function EditProduct() {
+export function CreateProduct() {
     const [producto, setProducto] = useState(initialValue);
-    const { valor, descripcion, estado } = producto;
+    const { descripcion, valor, estado } = producto;
+
     const classes = useStyles();
     let history = useHistory();
-
-    const { id } = useParams();
-
-    useEffect(() => {
-        loadProductoData();
-    }, [])
-
-    const loadProductoData = async () => {
-        let response = await getProducto(id);
-        setProducto(response.data.data);
-    }
 
     const onValueChange = (e) => {
         setProducto({ ...producto, [e.target.name]: e.target.value });
@@ -45,14 +35,14 @@ export function EditProduct() {
         setProducto({ ...producto, "estado": state });
     }
 
-    const updateProductoData = async () => {
-        await editProducto(producto);
-        history.push('/listarpro');
+    const addProductoData = async () => {
+        await addProducto(producto);
+        history.push('/gesproductos');
     }
 
     return (
         <FormGroup className={classes.container}>
-            <Typography align="center" variant="h4">Editar Producto</Typography>
+            <Typography align="center" variant="h4">Agregar Producto</Typography>
             <FormControl>
                 <InputLabel htmlFor="my-input">Descripción</InputLabel>
                 <Input onChange={(e) => onValueChange(e)} name="descripcion" value={descripcion} id="my-input" />
@@ -74,10 +64,10 @@ export function EditProduct() {
                 </RadioGroup>
             </FormControl>
             <FormControl>
-                <Button variant="contained" onClick={(e) => updateProductoData()} color="primary">Editar Producto</Button>
+                <Button variant="contained" onClick={(e) => addProductoData()} color="primary">Agregar Producto</Button>
             </FormControl>
         </FormGroup>
     )
 }
 
-export default EditProduct;
+export default CreateProduct;

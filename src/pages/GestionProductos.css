@@ -4,22 +4,17 @@ body{
 .boton_eliminar{
 
     background:red;
-    color:rgb(252, 252, 253);
+    color:white;
     border: 1px solid;
     border-color: black;
     
 }
 
-.boton_agregar{
+.agregar{
 
-    background:rgb(15, 100, 228);
-    color:white;
-    border: 2px solid;
-    border-color: blue;
-    max-width: 3%;
-    min-width: 30px;
-    text-align:center;
-    font-size: 18px;
+    margin-top:3%;
+    margin-bottom:3%;
+    text-align:right;
 }
 
 .boton-navegacion{
@@ -35,16 +30,19 @@ body{
 }
 
 
+
 .container{
-    max-width:100%;
-    background-color:rgb(8, 8, 8);
-    margin-left: 00%;
+    max-width:80%;
+    background-color:rgb(80, 15, 80);
+    margin-left: 10%;
 
 }
 
 .content-wrapper{
     background-color:white;
-    max-width: 100%;
+    max-width: 70%;
+    margin-left: 15%;
+    padding: 3%;
 }
 
 .formulario{
@@ -93,7 +91,7 @@ tr:nth-child(even) {
     margin-top:3%;
     margin-bottom:3%;
     text-align:center;
-    color:rgb(254, 255, 255);
+    color:white;
 
 }
 

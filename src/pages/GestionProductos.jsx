@@ -1,33 +1,33 @@
-import React from 'react'
+import React from 'react';
+import '../App.css';
 import './GestionProductos.css';
-import '../App.jsx';
+import { useState, useEffect } from 'react';
 
-const GestionProductos = () => {
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {ProductList} from './components/ProductList';
+import {CreateProduct} from './components/CreateProduct';
+import {EditProduct} from './components/EditProduct';
+import {NotFound} from './components/NotFound';
+
+
+
+export default function GestionProductos() {
     return (
-    <div className="App">
-    <h1 class="titulo">Gestión <span class="titulo_color">Productos</span> </h1>
-    <div class="container"></div>
-      <div>
-      <div class="btn-group">
-  <div class="btn-group">
-    <button type="button" class="btn btn-default dropdown-toggle"
-            data-toggle="dropdown">
-      Gestión Productos
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a href="./editarpro">Editar Producto</a></li>
-      <li><a href="./crearpro">Crear Producto</a></li>
-      <li><a href="./listarpro">Listar Productos</a></li>
-    </ul>
-  </div>
-</div>   
-        </div>
-        <div class="container">
-        </div>
-    </div>
-    
-    ) 
-};
+    <div>
+        <h1 class="titulo">Gestión de <span class="titulo_color">Productos</span> </h1>
+        <BrowserRouter>
+        
+            <Switch>
 
-export default GestionProductos;
+            <Route exact path="/gesproductos" component={ProductList} />
+            <Route exact path="/add" component={CreateProduct} />
+            <Route exact path="/edit/:id" component={EditProduct} />
+    
+
+            </Switch>
+
+        </BrowserRouter>
+    </div>
+        )
+}
+

@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import { App } from './App';
 import firebase from 'firebase/compat/app';
 
+
+
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyCCUKHvCOT1b86q-XEvudyqIFfaAUJ2il4",
   authDomain: "los-sprinters.firebaseapp.com",
